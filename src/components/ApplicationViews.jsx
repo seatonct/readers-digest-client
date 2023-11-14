@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import { Authorized } from "./Authorized";
 import { AddBook } from "./AddBook";
 import { AllBooks } from "./AllBooks";
+import { BookDetail } from "./BookDetail";
 
 export const ApplicationViews = () => {
   return (
@@ -16,7 +17,10 @@ export const ApplicationViews = () => {
         <Route element={<Authorized />}>
           <Route path="/" element={<Home />} />
           <Route path="/add" element={<AddBook />} />
-          <Route path="/allbooks" element={<AllBooks />} />
+          <Route path="allbooks">
+            <Route index element={<AllBooks />} />
+            <Route path=":bookId" element={<BookDetail />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
