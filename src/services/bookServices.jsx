@@ -1,4 +1,4 @@
-export const createBook = async (book, chosenCategories) => {
+export const createBook = async (book) => {
   await fetch("http://localhost:8000/books", {
     method: "POST",
     headers: {
@@ -7,6 +7,6 @@ export const createBook = async (book, chosenCategories) => {
       }`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ ...book, categories: Array.from(chosenCategories) }),
+    body: JSON.stringify(book),
   });
 };

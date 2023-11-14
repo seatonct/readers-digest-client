@@ -24,8 +24,9 @@ export const AddBook = () => {
 
   const handleSave = async (event) => {
     event.preventDefault();
-
-    await createBook(book, chosenCategories);
+    const copy = { ...book };
+    copy.categories = Array.from(chosenCategories);
+    await createBook(copy);
     navigate("/allbooks");
   };
 
@@ -41,7 +42,7 @@ export const AddBook = () => {
               type="text"
               onChange={(e) => {
                 const copy = { ...book };
-                copy.name = e.target.value;
+                copy.title = e.target.value;
                 setBook(copy);
               }}
               value={book.title}
