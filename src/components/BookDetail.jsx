@@ -30,8 +30,24 @@ export const BookDetail = () => {
         ) : (
           ""
         )}
-
         <p>ISBN {book.isbn_number}</p>
+        {book.reviews?.length > 0 ? (
+          <>
+            <h4>Reviews: </h4>
+            {book.reviews?.map((review) => {
+              return (
+                <div key={review.id}>
+                  <p>Rating: {review.rating}/10</p>
+                  <p>Comment: {review.comment}</p>
+                  <p>Reviewer: {review.user}</p>
+                  <p>Submitted: {review.date_posted}</p>
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          ""
+        )}
       </section>
     </>
   );
