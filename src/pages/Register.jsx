@@ -7,7 +7,7 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const existDialog = useRef();
+  const existDialog = useRef(null);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -49,7 +49,7 @@ export const Register = () => {
 
       <section>
         <form className="form--login" onSubmit={handleRegister}>
-          <h1 className="text-4xl mt-7 mb-3">Reader's Digest</h1>
+          <h1 className="text-4xl mt-7 mb-3">Readers Digest</h1>
           <h2 className="text-xl mb-10">Register new account</h2>
           <fieldset className="mb-4">
             <label htmlFor="firstName"> First name </label>

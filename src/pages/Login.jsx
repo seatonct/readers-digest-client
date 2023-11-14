@@ -5,7 +5,7 @@ import "./Login.css";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const existDialog = useRef();
+  const existDialog = useRef(null);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -19,7 +19,7 @@ export const Login = () => {
     })
       .then((res) => res.json())
       .then((authInfo) => {
-        if (authInfo.valid) {
+        if (authInfo.token) {
           localStorage.setItem("digest_token", JSON.stringify(authInfo));
           navigate("/");
         } else {
@@ -42,17 +42,17 @@ export const Login = () => {
 
       <section>
         <form className="form--login" onSubmit={handleLogin}>
-          <h1 className="text-4xl mt-7 mb-3">Reader's Digest</h1>
+          <h1 className="text-4xl mt-7 mb-3">Readers Digest</h1>
           <h2 className="text-xl mb-10">Please sign in</h2>
           <fieldset className="mb-4">
-            <label htmlFor="inputEmail"> Email address </label>
+            <label htmlFor="inputUsername"> Username </label>
             <input
               type="email"
               id="inputEmail"
               value={email}
               onChange={(evt) => setEmail(evt.target.value)}
               className="form-control"
-              placeholder="Email address"
+              placeholder="Email Address"
               required
               autoFocus
             />
